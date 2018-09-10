@@ -21,7 +21,7 @@ const fetchBookUrlsForPhrase = phrase => rp(setupOptions('GET', BASE_URL, { phra
 
 const fetchBookDetails = ($) => {
   const isbn = $('dd span[itemprop="isbn"]').text();
-  const publishingDate = $('dd span[itemprop="datePublished"]').attr('content');
+  const publishingDate = $('dd[itemprop="datePublished"]').attr('content');
 
   return {
     isbn,
