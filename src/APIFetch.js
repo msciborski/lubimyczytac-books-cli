@@ -43,11 +43,7 @@ const fetchBook = url => rp(setupOptions('GET', url))
   });
 
 const getBooks = phrase => fetchBookUrlsForPhrase(phrase)
-  .then((urls) => {
-    const books = [];
-    urls.forEach(url => books.push(Promise.resolve(fetchBook(url))));
-    return books;
-  });
+  .then(urls => Promise.all(urls.map(url => fetchBook(url))));
 
 
 module.exports.getBooks = getBooks;

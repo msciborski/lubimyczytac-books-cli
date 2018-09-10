@@ -15,8 +15,7 @@ switch (command) {
   case 'search': {
     const { phrase } = argv;
     APIFetch.getBooks(phrase)
-      .then(books => Promise.all(books)
-        .then(book => console.log(book)));
+      .then(books => console.log(books));
     break;
   }
   default:
