@@ -1,24 +1,7 @@
-const { argv } = require('yargs')
-  .command('search', 'Search book in lubimyczytac.pl', {
-    phrase: {
-      describe: 'Phrase to search',
-      demand: true,
-      alias: 'p',
-    },
-  });
+const cli = require('./CommandLineInteraction');
 
-const APIFetch = require('./APIFetch');
-
-const command = argv._[0];
-
-switch (command) {
-  case 'search': {
-    const { phrase } = argv;
-    APIFetch.getBooks(phrase)
-      .then(books => console.log(books));
-    break;
-  }
-  default:
-    console.log(`Command ${command} not found.`);
-    break;
+try {
+  cli.interact();
+} catch (error) {
+  console.log(error);
 }
