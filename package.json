@@ -5,15 +5,9 @@
   "author": "msciborski <michal.sciborski@student.put.poznan.pl>",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.24.1",
-    "cherio": "^1.0.0-rc.2",
-    "eslint-config-node": "^3.0.0",
     "lodash": "^4.17.10",
+    "lubimyczytac-books": "^1.0.0",
     "nodemon": "^1.18.4",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.2",
     "yargs": "^12.0.1"
   },
   "scripts": {

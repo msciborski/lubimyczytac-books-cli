@@ -1,3 +1,5 @@
+const lubimyCzytacFetch = require('lubimyczytac-books');
+
 const { argv } = require('yargs')
   .command('search', 'Search book in lubimyczytac.pl', {
     phrase: {
@@ -7,16 +9,21 @@ const { argv } = require('yargs')
     },
   });
 
-const APIFetch = require('./APIFetch');
-
 const command = argv._[0];
+
+const pageUrls = {
+  prevPageUrl: undefined,
+  nextPageUrl: undefined,
+};
 
 const interact = async () => {
   switch (command) {
     case 'search': {
       const { phrase } = argv;
-      const booksList = await APIFetch.getBooks(phrase);
-      console.log(booksList);
+      const booksList = await lubimyCzytacFetch.getBooksForPhrase(phrase);
+      pageUrls.nextPageUrl = booksList.nextPageUrl;
+      pageUrls.prevPageUrl = booksList.prevPageUrl;
+
       break;
     }
     default:
